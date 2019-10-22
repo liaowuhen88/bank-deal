@@ -29,11 +29,11 @@ Mock.mock('/api/users', userData)
 // 银行卡数据
 const bankData = () => {
   let banks = [
-    {"name":"李杰","bank":"交通银行","bankCard":Mock.mock(/^1[0-9]{10}$/)},
-    {"name":"李杰","bank":"招生银行","bankCard":Mock.mock(/^1[0-9]{10}$/)},
-    {"name":"李艳","bank":"中国银行","bankCard":Mock.mock(/^1[0-9]{10}$/)},
-    {"name":"李凭跃","bank":"交通银行","bankCard":Mock.mock(/^1[0-9]{10}$/)},
-    {"name":"李杰","bank":"广发银行","bankCard":Mock.mock(/^1[0-9]{10}$/)},
+    {"name":"李杰","bank":"交通银行","bankCard":Mock.mock(/^1[0-9]{10}$/),"accountBalance":"100000"},
+    {"name":"李杰","bank":"招生银行","bankCard":Mock.mock(/^1[0-9]{10}$/),"accountBalance":"100000"},
+    {"name":"李艳","bank":"中国银行","bankCard":Mock.mock(/^1[0-9]{10}$/),"accountBalance":"100000"},
+    {"name":"李凭跃","bank":"交通银行","bankCard":Mock.mock(/^1[0-9]{10}$/),"accountBalance":"100000"},
+    {"name":"李杰","bank":"广发银行","bankCard":Mock.mock(/^1[0-9]{10}$/),"accountBalance":"100000"},
   ]
   return banks
 }
