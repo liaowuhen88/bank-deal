@@ -11,26 +11,38 @@
       <i class="el-icon-location"></i>
       <span slot="title">主页</span>
     </el-menu-item>
-    <el-menu-item index="/users">
+    <!-- <el-menu-item index="/users">
       <i class="el-icon-menu"></i>
       <span slot="title">用户</span>
+    </el-menu-item> -->
+     <el-menu-item index="/bankCard">
+      <i class="el-icon-menu"></i>
+      <span slot="title">银行卡</span>
     </el-menu-item>
-    <el-menu-item index="/articles">
+    <el-menu-item index="/bankProducts">
+      <i class="el-icon-menu"></i>
+      <span slot="title">理财产品</span>
+    </el-menu-item>
+    <el-menu-item index="/bankLog">
+      <i class="el-icon-menu"></i>
+      <span slot="title">操作日志</span>
+    </el-menu-item>
+    <!-- <el-menu-item index="/articles">
       <i class="el-icon-document"></i>
       <span slot="title">文章</span>
     </el-menu-item>
     <el-menu-item index="/mailList">
       <i class="el-icon-message"></i>
       <span slot="title">邮件</span>
-    </el-menu-item>
-    <el-submenu index="4">
+    </el-menu-item> -->
+    <!-- <el-submenu index="4">
       <template slot="title">
         <i class="el-icon-setting"></i>
         <span>设置</span>
       </template>
       <el-menu-item index="/profile">基本资料 (空)</el-menu-item>
       <el-menu-item index="/password">修改密码 (空)</el-menu-item>
-    </el-submenu>
+    </el-submenu> -->
     <el-menu-item index="/echarts">
       <i class="el-icon-share"></i>
       <span slot="title">图表</span>

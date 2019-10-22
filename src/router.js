@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Index from './views/Index.vue'
 import Console from './views/Console.vue'
 import Users from './views/Users.vue'
+import bankCard from './views/bankCard.vue'
+import bankProducts from './views/bankProducts.vue'
+import bankLog from './views/bankLog.vue'
 import Articles from './views/Articles.vue'
 import Echarts from './views/Echarts.vue'
 import Login from './views/Login.vue'
@@ -28,21 +31,37 @@ const router = new Router({
           name: 'console',
           component: Console
         },
+        // {
+        //   path: '/users',
+        //   name: 'users',
+        //   component: Users
+        // },
         {
-          path: '/users',
-          name: 'users',
-          component: Users
+          path: '/bankCard',
+          name: 'bankCard',
+          component: bankCard
         },
         {
-          path: '/articles',
-          name: 'articles',
-          component: Articles
+          path: '/bankProducts',
+          name: 'bankProducts',
+          component: bankProducts
         },
         {
-          path: '/echarts',
-          name: 'echarts',
-          component: Echarts
+          path: '/bankLog',
+          name: 'bankLog',
+          component: bankLog
         },
+
+        // {
+        //   path: '/articles',
+        //   name: 'articles',
+        //   component: Articles
+        // },
+        // {
+        //   path: '/echarts',
+        //   name: 'echarts',
+        //   component: Echarts
+        // },
         {
           path: '/mailList',
           name: 'mailList',
