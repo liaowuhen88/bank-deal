@@ -1,11 +1,32 @@
 <template>
   <div class="user-box">
     <el-row>
-      <el-col :span="24">
-        <div class="tool-box">
-          <el-button type="primary" icon="el-icon-circle-plus-outline" size="small" @click="handleAdd">新增</el-button>
+      <el-col :span="4">
+        <el-select v-model="sendCount" clearable  placeholder="请选择姓名">
+          <el-option
+            v-for="item in sendCountList"
+            :key="item.key"
+            :label="item.label"
+            :value="item.key">
+          </el-option>
+        </el-select>
+      </el-col>
+      <el-col :span="4">
+        <el-select v-model="mailStatusSNMP" clearable  placeholder="请选择银行卡">
+          <el-option
+            v-for="item in mailStatusList"
+            :key="item.key"
+            :label="item.label"
+            :value="item.key">
+          </el-option>
+        </el-select>
+      </el-col>
+      <el-col :span="2" :offset="1">
+        <el-button  type="primary" icon="el-icon-search" @click="getmails()">搜索</el-button>
+      </el-col>
+      <el-col :span="2"  :offset="10">
+          <el-button type="primary" icon="el-icon-circle-plus-outline" @click="handleAdd">新增</el-button>
           <!-- <el-button type="danger" icon="el-icon-delete" size="small" @click="mulDelete">批量删除</el-button> -->
-        </div>
       </el-col>
     </el-row>
     <el-table
