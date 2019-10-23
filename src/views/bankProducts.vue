@@ -1,25 +1,12 @@
 <template>
   <div class="bankProduct-box">
-    <el-row>
-      <el-col :span="4">
-        <el-select v-model="name" clearable placeholder="请选择姓名">
-          <el-option v-for="item in names" :key="item" :label="item" :value="item"></el-option>
-        </el-select>
-      </el-col>
-      <el-col :span="4">
-        <el-select v-model="bank" clearable placeholder="请选择银行卡">
-          <el-option v-for="item in banks" :key="item" :label="item" :value="item"></el-option>
-        </el-select>
-      </el-col>
-      <el-col :span="2" :offset="1">
-        <el-button type="primary" icon="el-icon-search" @click="getBankProducts()">搜索</el-button>
-      </el-col>
-      <el-col :span="2" :offset="10">
-        <el-button type="primary" icon="el-icon-circle-plus-outline" @click="handleAdd">新增</el-button>
-        <!-- <el-button type="danger" icon="el-icon-delete" size="small" @click="mulDelete">批量删除</el-button> -->
-      </el-col>
-    </el-row>
-    <el-table :data="bankProducts" show-summary :summary-method="getSummaries" @selection-change="selectChange" style="width: 100%">
+    <searchs @search="getBankProducts" />
+    <el-table
+      :data="bankProducts"
+      show-summary
+      @selection-change="selectChange"
+      style="width: 100%"
+    >
       <el-table-column type="selection"></el-table-column>
       <el-table-column prop="name" label="姓名"></el-table-column>
       <el-table-column prop="bank" label="银行"></el-table-column>
@@ -91,6 +78,7 @@
 </template>
 
 <script>
+import searchs from "@/components/search/search";
 export default {
   data() {
     return {
@@ -98,9 +86,7 @@ export default {
       currentPage: 1, //默认开始页面
       pageSize: 10,
       bankProducts: [],
-      names: ["李杰", "李艳", "李凭跃"],
       name: "",
-      banks: ["中国工商银行", "招商银行", "交通银行", "天津银行"],
       bank: "",
       bankProduct: {
         id: "",
@@ -126,8 +112,12 @@ export default {
   mounted() {
     this.getBankProducts();
   },
+  components: {
+    searchs
+  },
   methods: {
-    getBankProducts() {
+    getBankProducts(param) {
+      console.log("getBankProducts" + JSON.stringify(param));
       let postData = this.$qs.stringify({
         page: this.currentPage,
         rows: this.pageSize,
@@ -137,18 +127,21 @@ export default {
       this.loading = true;
       this.$http("/api/bankProducts")
         .then(res => {
-          this.bankProducts = res.data.filter((item) => {
-          let self = this;
-            if ("" != this.name && "" != this.bank) {
-              return item.name == this.name && item.bank == this.bank;
+          this.bankProducts = res.data.filter(item => {
+            if (param) {
+              if ("" != param.name && "" != param.bank) {
+                return item.name == param.name && item.bank == param.bank;
+              }
+              if ("" != param.name) {
+                return item.name == param.name;
+              }
+              if ("" != param.bank) {
+                return item.bank == param.bank;
+              }
+              return true;
+            } else {
+              return true;
             }
-            if ("" != this.name) {
-              return item.name == this.name;
-            }
-            if ("" != this.bank) {
-              return item.bank == this.bank;
-            }
-            return true;
           });
         })
         .catch(err => {
